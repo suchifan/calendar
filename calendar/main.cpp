@@ -51,12 +51,31 @@ int findDay(int m){
     }
 }
 
+bool isLeap(int y){
+    bool result = false;
+    if(y % 100 == 0 && y % 400 == 0){
+        result = true;
+    }
+    if(y % 100 != 0 && y % 4 == 0){
+        result = true;
+    }
+    
+    return result;
+}
+    
+    
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     cout << "calendar\n";
     cout << "input year & month:";
     int y,m;
     cin >> y >> m;
+    while(!isLeap(y) || m > 12 || m < 1 ){
+        cout << "reinput:";
+        cin >> y >> m;
+    }
+    
     
     cout << "\t" << y << " 年 " << "\t" << m << "月" << endl;
     
